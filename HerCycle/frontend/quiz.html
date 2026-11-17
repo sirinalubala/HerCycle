@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Quiz | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 25px;
+        }
+
+        .quiz-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-card {
+            background: #fff5f8;
+            padding: 30px;
+            border-radius: 18px;
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #98536d;
+        }
+
+        .progress-track {
+            height: 9px;
+            background: #f1dce4;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: #d9789b;
+            transition: width 0.3s;
+        }
+
+        .question {
+            margin-bottom: 22px;
+            font-size: 21px;
+        }
+
+        .options {
+            display: grid;
+            gap: 13px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 15px;
+            text-align: left;
+            background: white;
+            border: 2px solid #f0d4df;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: #d9789b;
+            background: #fff0f5;
+        }
+
+        .option-btn.correct {
+            background: #e3f5e8;
+            border-color: #5eaa72;
+        }
+
+        .option-btn.wrong {
+            background: #fde8e8;
+            border-color: #df7777;
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        #feedback {
+            margin: 20px 0;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        .quiz-next, .restart-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 9px;
+            background: #d9789b;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quiz-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            display: none;
+            padding: 30px 10px;
+        }
+
+        .quiz-result h2 {
+            color: #b65e80;
+            font-size: 28px;
+        }
+
+        .result-score {
+            font-size: 45px;
+            font-weight: bold;
+            color: #d9789b;
+            margin: 20px;
+        }
+
+        .quiz-tip {
+            margin-top: 25px;
+            padding: 18px;
+            background: #fff0f5;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>HerCycle</h2>
+        <div>
+            <a href="boy-dashboard.html">Dashboard</a>
+            <a href="awareness.html">Awareness</a>
+            <a href="quiz.html">Knowledge Quiz</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </nav>
+
+    <main class="quiz-container">
+
+        <section class="quiz-heading">
+            <h1>Knowledge Quiz 🧠</h1>
+            <p>Test your knowledge about menstrual health!</p>
+        </section>
+
+        <section class="quiz-card" id="quizCard">
+
+            <div class="quiz-progress">
+                <span id="questionNumber">Question 1 of 10</span>
+                <span id="scoreDisplay">Score: 0</span>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <h2 class="question" id="questionText"></h2>
+
+            <div class="options" id="optionsContainer"></div>
+
+            <p id="feedback"></p>
+
+            <button class="quiz-next" id="nextButton" disabled>
+                Next Question →
+            </button>
+
+        </section>
+
+        <section class="quiz-result" id="quizResult">
+            <h2>Quiz Completed! 🌸</h2>
+            <div class="result-score" id="finalScore"></div>
+            <h3 id="resultMessage"></h3>
+            <p id="resultDescription"></p>
+
+            <button class="restart-btn" onclick="restartQuiz()">
+                Restart Quiz ↻
+            </button>
+        </section>
+
+        <section class="quiz-tip">
+            <h3>Why does this matter? 💗</h3>
+            <p>
+                Understanding menstrual health helps us break myths,
+                support others and create a more informed society.
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        const questions = [
+            {
+                question: "1. What is menstruation?",
+                options: [
+                    "The shedding of the uterine lining",
+                    "The release of an egg every day",
+                    "A type of infection",
+                    "A digestive process"
+                ],
+                answer: 0,
+                explanation: "Menstruation happens when the uterine lining sheds and leaves the body through the vagina."
+            },
+            {
+                question: "2. What is the average menstrual cycle length?",
+                options: [
+                    "7 days",
+                    "Around 21–35 days for adults",
+                    "Exactly 15 days",
+                    "60 days"
+                ],
+                answer: 1,
+                explanation: "Many adult menstrual cycles fall between 21 and 35 days, though individual patterns vary."
+            },
+            {
+                question: "3. Which organ releases an egg during ovulation?",
+                options: [
+                    "Uterus",
+                    "Kidney",
+                    "Ovary",
+                    "Stomach"
+                ],
+                answer: 2,
+                explanation: "An ovary releases an egg during ovulation."
+            },
+            {
+                question: "4. Can someone exercise during their period?",
+                options: [
+                    "No, never",
+                    "Yes, if they feel comfortable",
+                    "Only on the last day",
+                    "Exercise is dangerous during periods"
+                ],
+                answer: 1,
+                explanation: "Gentle or regular exercise can be done during periods if the person feels comfortable."
+            },
+            {
+                question: "5. How often should a sanitary pad generally be changed?",
+                options: [
+                    "Only once a day",
+                    "Every 4–6 hours, or sooner if needed",
+                    "Only when sleeping",
+                    "Once every two days"
+                ],
+                answer: 1,
+                explanation: "Pads are generally changed every 4–6 hours, or sooner when full or uncomfortable."
+            },
+            {
+                question: "6. Is period blood dirty?",
+                options: [
+                    "Yes",
+                    "No, it is a normal body fluid",
+                    "Only during the first period",
+                    "It is always harmful"
+                ],
+                answer: 1,
+                explanation: "Menstrual blood is a normal body fluid. Menstruation is not dirty or shameful."
+            },
+            {
+                question: "7. What is PMS?",
+                options: [
+                    "Premenstrual Syndrome",
+                    "Personal Medical System",
+                    "Period Monitoring Schedule",
+                    "Post Menstrual Sleep"
+                ],
+                answer: 0,
+                explanation: "PMS refers to physical and emotional symptoms that some people experience before their period."
+            },
+            {
+                question: "8. Can periods be irregular during the first few years?",
+                options: [
+                    "Yes, cycles may take time to become regular",
+                    "No, they must always be exact",
+                    "It always means an illness",
+                    "Periods should happen every week"
+                ],
+                answer: 0,
+                explanation: "Cycles can be irregular during the first few years after periods begin."
+            },
+            {
+                question: "9. What is a helpful way to support someone during their period?",
+                options: [
+                    "Make fun of them",
+                    "Ignore their feelings",
+                    "Offer support and ask what they need",
+                    "Tell them they are overreacting"
+                ],
+                answer: 2,
+                explanation: "Listening, respecting their feelings and offering practical help are supportive actions."
+            },
+            {
+                question: "10. When should someone seek medical advice?",
+                options: [
+                    "For severe pain or unusually heavy bleeding",
+                    "Whenever they feel happy",
+                    "Only after 10 years",
+                    "Never"
+                ],
+                answer: 0,
+                explanation: "Severe pain, unusually heavy bleeding or other concerning changes deserve medical attention."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionText = document.getElementById("questionText");
+        const optionsContainer = document.getElementById("optionsContainer");
+        const feedback = document.getElementById("feedback");
+        const nextButton = document.getElementById("nextButton");
+
+        function loadQuestion() {
+            answered = false;
+
+            const current = questions[currentQuestion];
+
+            document.getElementById("questionNumber").textContent =
+                `Question ${currentQuestion + 1} of ${questions.length}`;
+
+            document.getElementById("scoreDisplay").textContent =
+                `Score: ${score}`;
+
+            document.getElementById("progressFill").style.width =
+                `${(currentQuestion / questions.length) * 100}%`;
+
+            questionText.textContent = current.question;
+            optionsContainer.innerHTML = "";
+            feedback.textContent = "";
+            nextButton.disabled = true;
+
+            current.options.forEach((option, index) => {
+                const button = document.createElement("button");
+
+                button.className = "option-btn";
+                button.textContent = option;
+
+                button.addEventListener("click", () => {
+                    checkAnswer(index, button);
+                });
+
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedIndex, selectedButton) {
+            if (answered) return;
+
+            answered = true;
+
+            const correctIndex = questions[currentQuestion].answer;
+            const allButtons = optionsContainer.querySelectorAll("button");
+
+            allButtons.forEach((button, index) => {
+                button.disabled = true;
+
+                if (index === correctIndex) {
+                    button.classList.add("correct");
+                }
+            });
+
+            if (selectedIndex === correctIndex) {
+                score++;
+                feedback.textContent = "Correct! Great job! 💗";
+            } else {
+                selectedButton.classList.add("wrong");
+                feedback.textContent = "Not quite! " +
+                    questions[currentQuestion].explanation;
+            }
+
+            document.getElementById("scoreDisplay").textContent =
+                `Score: ${score}`;
+
+            nextButton.disabled = false;
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        function showResult() {
+            document.getElementById("quizCard").style.display = "none";
+            document.getElementById("quizResult").style.display = "block";
+
+            document.getElementById("progressFill").style.width = "100%";
+
+            document.getElementById("finalScore").textContent =
+                `${score} / ${questions.length}`;
+
+            let message;
+            let description;
+
+            if (score >= 9) {
+                message = "Excellent! 🌟";
+                description = "You have a strong understanding of menstrual health.";
+            } else if (score >= 7) {
+                message = "Great Work! 🌸";
+                description = "You know quite a lot. Keep learning!";
+            } else if (score >= 5) {
+                message = "Good Attempt! 💗";
+                description = "You are learning. Explore the Awareness section to improve.";
+            } else {
+                message = "Keep Learning! 🌱";
+                description = "Every question is a chance to learn something new. Try again!";
+            }
+
+            document.getElementById("resultMessage").textContent = message;
+            document.getElementById("resultDescription").textContent =
+                description;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+
+            document.getElementById("quizCard").style.display = "block";
+            document.getElementById("quizResult").style.display = "none";
+
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

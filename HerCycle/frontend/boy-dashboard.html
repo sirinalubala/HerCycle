@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boy Dashboard | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .boy-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .boy-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .boy-header h1 {
+            color: #a94e78;
+        }
+
+        .boy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .boy-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s;
+        }
+
+        .boy-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .boy-card h2 {
+            color: #a94e78;
+        }
+
+        .boy-card p {
+            line-height: 1.6;
+        }
+
+        .boy-card a {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 18px;
+            background: #d9789b;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .boy-message {
+            text-align: center;
+            margin-top: 35px;
+            padding: 25px;
+            background: #fceaf1;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>HerCycle 🌸</h2>
+
+        <div>
+            <a href="boy-dashboard.html">Home</a>
+            <a href="awareness.html">Awareness</a>
+            <a href="quiz.html">Quick Quiz</a>
+        </div>
+
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <main class="boy-container">
+
+        <header class="boy-header">
+            <p>LEARN • UNDERSTAND • SUPPORT</p>
+            <h1>Welcome to Be Supportive 💙</h1>
+            <p>
+                Menstrual health awareness is everyone's responsibility.
+                Learn how to understand, respect and support others.
+            </p>
+        </header>
+
+        <section class="boy-grid">
+
+            <div class="boy-card">
+                <h2>📖 The Basics</h2>
+                <p>
+                    Understand menstruation, the menstrual cycle,
+                    its phases and common symptoms.
+                </p>
+                <a href="awareness.html#basics">Learn More →</a>
+            </div>
+
+            <div class="boy-card">
+                <h2>💙 Be There</h2>
+                <p>
+                    Learn how to support mothers, sisters, friends,
+                    classmates and others during menstruation.
+                </p>
+                <a href="awareness.html#be-there">Explore →</a>
+            </div>
+
+            <div class="boy-card">
+                <h2>💡 Myth vs Fact</h2>
+                <p>
+                    Discover common menstrual health myths
+                    and understand the actual facts.
+                </p>
+                <a href="awareness.html#myth-fact">Discover Facts →</a>
+            </div>
+
+            <div class="boy-card">
+                <h2>🧠 Quick Quiz</h2>
+                <p>
+                    Test your menstrual health knowledge
+                    through an interactive quiz.
+                </p>
+                <a href="quiz.html">Take Quiz →</a>
+            </div>
+
+            <div class="boy-card">
+                <h2>🤔 What Would You Do?</h2>
+                <p>
+                    Explore everyday situations and learn
+                    how to respond with kindness and understanding.
+                </p>
+                <a href="awareness.html#scenarios">Try Now →</a>
+            </div>
+
+            <div class="boy-card">
+                <h2>🚨 Emergency Guide</h2>
+                <p>
+                    Learn what to do during unexpected periods,
+                    severe cramps, heavy bleeding and other
+                    situations that may need medical attention.
+                </p>
+                <a href="emergencyguide.html">View Guide →</a>
+            </div>
+
+            <div class="boy-card">
+                <h2>🌸 Awareness Challenges</h2>
+                <p>
+                    Complete small activities, learn useful facts
+                    and spread menstrual health awareness.
+                </p>
+                <a href="awareness.html#challenges">Start Challenges →</a>
+            </div>
+
+        </section>
+
+        <section class="boy-message">
+            <h2>💗 A Little Understanding Goes a Long Way</h2>
+            <p>
+                Be respectful. Be supportive. Break the stigma.
+                Menstrual health awareness starts with all of us.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>HerCycle 🌸</h3>
+        <p>Understand Your Cycle. Understand Your Health.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

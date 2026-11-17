@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Tracker | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .symptom-container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .symptom-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .symptom-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .symptom-card label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+        }
+
+        .symptom-card input,
+        .symptom-card select,
+        .symptom-card textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font: inherit;
+        }
+
+        .symptom-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .symptom-option {
+            background: #fff0f5;
+            padding: 12px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .symptom-option input {
+            width: auto;
+        }
+
+        .symptom-card button {
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #d85b8b;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .symptom-card button:hover {
+            background: #bd4775;
+        }
+
+        .history-entry {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .history-entry button {
+            background: #777;
+            padding: 7px 12px;
+            font-size: 13px;
+        }
+
+        .message {
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        @media(max-width: 600px) {
+            .symptom-container {
+                padding: 12px;
+            }
+
+            .symptom-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="tracker.html">Period Tracker</a>
+        <a href="symptoms.html">Symptoms</a>
+        <a href="mood.html">Mood Journal</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="reports.html">Reports</a>
+        <a href="awareness.html">Awareness</a>
+        <a href="boy-dashboard.html">For Him</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <div class="symptom-container">
+
+        <div class="symptom-header">
+            <h1>Symptom Tracker</h1>
+            <p>Understand your body by recording the symptoms you experience.</p>
+        </div>
+
+        <div class="symptom-card">
+            <h2>Record Your Symptoms</h2>
+
+            <label for="symptomDate">Date</label>
+            <input type="date" id="symptomDate">
+
+            <h3 style="margin-top:22px;">Select Your Symptoms</h3>
+
+            <div class="symptom-options">
+                <label class="symptom-option">
+                    <input type="checkbox" value="Cramps"> Cramps
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Headache"> Headache
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Bloating"> Bloating
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Fatigue"> Fatigue
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Back Pain"> Back Pain
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Breast Tenderness"> Breast Tenderness
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Acne"> Acne
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Nausea"> Nausea
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Mood Swings"> Mood Swings
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Food Cravings"> Food Cravings
+                </label>
+
+                <label class="symptom-option">
+                    <input type="checkbox" value="Other"> Other
+                </label>
+            </div>
+
+            <label for="severity">Symptom Severity</label>
+            <select id="severity">
+                <option value="">Select severity</option>
+                <option value="Mild">Mild</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Severe">Severe</option>
+            </select>
+
+            <label for="notes">Additional Notes (Optional)</label>
+            <textarea id="notes" rows="4"
+                placeholder="Describe how you are feeling..."></textarea>
+
+            <button onclick="saveSymptoms()">Save Symptoms</button>
+
+            <p class="message" id="message"></p>
+        </div>
+
+        <div class="symptom-card">
+            <h2>Your Symptom History</h2>
+            <div id="symptomHistory">
+                <p>No symptom records yet.</p>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Awareness | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .awareness-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .awareness-navigation a {
+            text-decoration: none;
+            padding: 9px 16px;
+            border-radius: 20px;
+            background: #f5e2ee;
+            color: #813d70;
+        }
+
+        .scenario-option {
+            display: block;
+            width: 100%;
+            padding: 13px 16px;
+            margin: 10px 0;
+            border: 1px solid #e4c4d9;
+            border-radius: 8px;
+            background: #fff8fb;
+            color: #392b3b;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .scenario-option:hover:not(:disabled) {
+            background: #f5ddec;
+        }
+
+        .scenario-option:disabled {
+            cursor: default;
+            opacity: 0.85;
+        }
+
+        .scenario-option.correct {
+            background: #e3f5e8;
+            border-color: #5eaa72;
+        }
+
+        .scenario-option.wrong {
+            background: #fde8e8;
+            border-color: #df7777;
+        }
+
+        .scenario-feedback {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        .challenge-progress-track {
+            width: 100%;
+            height: 12px;
+            background: #f1dce4;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+        .challenge-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #d9789b;
+            transition: width 0.3s;
+        }
+
+        .challenge-item {
+            margin: 15px 0;
+        }
+
+        .challenge-item button {
+            margin-top: 10px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #d9789b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .challenge-item button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .challenge-reset {
+            margin-top: 15px;
+            padding: 10px 18px;
+            border: 1px solid #d9789b;
+            border-radius: 8px;
+            background: white;
+            color: #98536d;
+            cursor: pointer;
+        }
+
+        .emergency-link {
+            color: #a94e78;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>HerCycle 🌸</h2>
+
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="tracker.html">Period Tracker</a>
+            <a href="symptoms.html">Symptoms</a>
+            <a href="mood.html">Mood Journal</a>
+            <a href="reports.html">Reports</a>
+        </div>
+
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <main class="awareness-container">
+
+        <header class="awareness-heading">
+            <p>LEARN • UNDERSTAND • CARE</p>
+            <h1>Menstrual Health Awareness 🌷</h1>
+            <p>
+                Knowledge helps you understand menstrual health
+                and make informed decisions.
+            </p>
+        </header>
+
+        <!-- QUICK NAVIGATION -->
+
+        <div class="awareness-navigation">
+            <a href="#basics">The Basics</a>
+            <a href="#be-there">Be There</a>
+            <a href="#myth-fact">Myth vs Fact</a>
+            <a href="#hygiene">Period Hygiene</a>
+            <a href="#self-care">Self-Care</a>
+            <a href="#doctor">Doctor Consultation</a>
+            <a href="#scenarios">What Would You Do?</a>
+            <a href="#challenges">Awareness Challenges</a>
+            <a href="#emergency-guide">Emergency Guide</a>
+        </div>
+
+        <!-- INTRODUCTION -->
+
+        <section class="awareness-intro">
+            <h2>Your Body, Your Health 💗</h2>
+            <p>
+                Menstruation is a natural biological process.
+                Every person's experience is different, and understanding
+                the menstrual cycle can help people take better care
+                of their health.
+            </p>
+        </section>
+
+        <!-- 1. THE BASICS -->
+
+        <section class="awareness-section" id="basics">
+
+            <h2>1. The Basics 🌸</h2>
+
+            <div class="awareness-card">
+                <h3>What is Menstruation?</h3>
+                <p>
+                    Menstruation, commonly called a period, is the natural
+                    process in which the uterus sheds its lining through
+                    the vagina when pregnancy does not occur.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Menstrual Phase</h3>
+                <p>
+                    The uterine lining sheds, resulting in menstrual bleeding.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Follicular Phase</h3>
+                <p>
+                    Hormones support the growth of ovarian follicles
+                    and the uterine lining.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Ovulation</h3>
+                <p>
+                    An ovary releases an egg. The timing can vary
+                    from cycle to cycle.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Luteal Phase</h3>
+                <p>
+                    Hormones prepare the uterine lining. If pregnancy
+                    does not occur, hormone levels fall and another
+                    period begins.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Common Period Symptoms</h3>
+                <p>
+                    Cramps, headaches, bloating, fatigue, acne,
+                    mood changes and food cravings are some symptoms
+                    people may experience.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- 2. BE THERE -->
+
+        <section class="awareness-section" id="be-there">
+
+            <h2>2. Be There 💙</h2>
+
+            <p>
+                Supporting someone during menstruation does not require
+                anything extraordinary. Small acts of understanding,
+                kindness and respect can make a difference.
+            </p>
+
+            <div class="awareness-card">
+                <h3>At Home 🏠</h3>
+                <p>
+                    Support your mother, sister or other family members.
+                    Help them when they need something and respect
+                    their privacy.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>With Friends and Classmates 🫂</h3>
+                <p>
+                    Never make fun of someone experiencing period symptoms.
+                    Offer help if they need a sanitary product or someone
+                    to talk to.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>In Relationships 💗</h3>
+                <p>
+                    Listen, be patient and understand that everyone
+                    experiences menstruation differently. Never dismiss
+                    someone's discomfort.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>In Public Places 🤝</h3>
+                <p>
+                    If someone experiences an unexpected period,
+                    help them find a restroom or sanitary product
+                    without embarrassing them.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Things You Can Do</h3>
+                <ul>
+                    <li>Listen without judging.</li>
+                    <li>Help someone get a sanitary product if needed.</li>
+                    <li>Respect their personal space and privacy.</li>
+                    <li>Never make insensitive jokes about periods.</li>
+                    <li>Encourage respectful conversations.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- 3. MYTH VS FACT -->
+
+        <section class="awareness-section" id="myth-fact">
+
+            <h2>3. Myth vs Fact 💡</h2>
+
+            <p>Let's replace common misconceptions with facts.</p>
+
+            <div class="awareness-card">
+                <h3>Myth: Periods are dirty.</h3>
+                <p>
+                    <strong>Fact:</strong>
+                    Menstruation is a natural biological process.
+                    Menstrual blood is not dirty or impure.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Myth: Everyone has a 28-day cycle.</h3>
+                <p>
+                    <strong>Fact:</strong>
+                    Cycle lengths vary from person to person
+                    and can change over time.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Myth: Period pain should always be ignored.</h3>
+                <p>
+                    <strong>Fact:</strong>
+                    Severe or disruptive pain deserves medical attention.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Myth: Talking about periods is embarrassing.</h3>
+                <p>
+                    <strong>Fact:</strong>
+                    Menstrual health is a normal health topic
+                    that should be discussed respectfully.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Myth: Boys don't need to learn about periods.</h3>
+                <p>
+                    <strong>Fact:</strong>
+                    Everyone can benefit from understanding
+                    menstrual health.
+                </p>
+            </div>
+
+            <div class="awareness-card">
+                <h3>Myth: Periods always stop people from exercising.</h3>
+                <p>
+                    <strong>Fact:</strong>
+                    Many people can exercise during their periods
+                    if they feel comfortable.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- 4. PERIOD HYGIENE -->
+
+        <section class="awareness-section" id="hygiene">
+
+            <h2>4. Period Hygiene 🧼</h2>
+
+            <div class="awareness-card">
+                <ul>
+                    <li>Change sanitary pads every few hours or sooner when needed.</li>
+                    <li>Follow product instructions for tampons and menstrual cups.</li>
+                    <li>Wash hands before and after changing menstrual products.</li>
+                    <li>Clean the external genital area gently with water.</li>
+                    <li>Avoid scented products and internal vaginal washes.</li>
+                    <li>Dispose of used products hygienically.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- 5. NUTRITION AND SELF CARE -->
+
+        <section class="awareness-section" id="self-care">
+
+            <h2>5. Nutrition and Self-Care 🥗</h2>
+
+            <div class="awareness-card">
+                <ul>
+                    <li>Include iron-rich foods such as beans, spinach and fortified foods.</li>
+                    <li>Eat a balanced diet with fruits, vegetables and protein.</li>
+                    <li>Drink enough water throughout the day.</li>
+                    <li>Try gentle movement or walking if it feels comfortable.</li>
+                    <li>Get adequate sleep and allow yourself to rest.</li>
+                    <li>A warm compress may help ease menstrual cramps.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- 6. DOCTOR CONSULTATION -->
+
+        <section class="awareness-section" id="doctor">
+
+            <h2>6. When Should You Consult a Doctor? 🩺</h2>
+
+            <div class="awareness-card">
+                <ul>
+                    <li>Periods are repeatedly very heavy or last longer than usual.</li>
+                    <li>Menstrual pain is severe or affects everyday activities.</li>
+                    <li>Your periods suddenly become very irregular.</li>
+                    <li>You experience bleeding between periods.</li>
+                    <li>You miss periods unexpectedly and pregnancy is possible.</li>
+                    <li>You experience unusual discharge, fever or pelvic pain.</li>
+                </ul>
+
+                <p>
+                    Seek urgent medical care for extremely heavy bleeding,
+                    fainting, severe sudden pain or other alarming symptoms.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- 7. WHAT WOULD YOU DO -->
+
+        <section class="awareness-section" id="scenarios">
+
+            <h2>7. What Would You Do? 🤔</h2>
+
+            <p>
+                Explore these real-life situations and test how
+                you would respond.
+            </p>
+
+            <div class="awareness-card">
+
+                <h3 id="scenario-question"></h3>
+
+                <div id="scenario-options"></div>
+
+                <p id="scenario-feedback" class="scenario-feedback"></p>
+
+                <button
+                    id="nextScenarioButton"
+                    class="primary-btn"
+                    style="border:none;cursor:pointer;margin-top:15px;"
+                >
+                    Next Scenario →
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- 8. AWARENESS CHALLENGES -->
+
+        <section class="awareness-section" id="challenges">
+
+            <h2>8. Awareness Challenges 🌸</h2>
+
+            <p>
+                Learn something new, spread awareness and make a difference
+                through small awareness activities.
+            </p>
+
+            <div class="awareness-card">
+
+                <h3>Your Challenge Progress 💗</h3>
+
+                <p id="challengeProgress" class="challenge-status">
+                    0 of 7 challenges completed
+                </p>
+
+                <div class="challenge-progress-track">
+                    <div
+                        class="challenge-progress-fill"
+                        id="challengeProgressBar"
+                    ></div>
+                </div>
+
+                <h3>
+                    ⭐ Points: <span id="challengePoints">0</span>
+                </h3>
+
+            </div>
+
+            <div id="challengeList"></div>
+
+            <div class="awareness-card">
+                <h3>Your Awareness Journey 🏆</h3>
+
+                <p id="challengeMessage">
+                    Complete your first challenge to begin your journey.
+                </p>
+
+                <button
+                    class="challenge-reset"
+                    onclick="resetChallenges()"
+                >
+                    Reset Progress
+                </button>
+            </div>
+
+        </section>
+
+        <!-- 9. PERIOD EMERGENCY GUIDE -->
+
+        <section class="awareness-section" id="emergency-guide">
+
+            <h2>9. Period Emergency Guide 🚨</h2>
+
+            <div class="awareness-card">
+                <h3>Know What to Do in Unexpected Situations</h3>
+
+                <p>
+                    Learn how to handle unexpected periods, severe cramps,
+                    heavy bleeding, dizziness and other situations that
+                    may require medical attention.
+                </p>
+
+                <a href="emergencyguide.html" class="emergency-link">
+                    Explore Period Emergency Guide →
+                </a>
+            </div>
+
+        </section>
+
+        <!-- 10. REMEMBER -->
+
+        <section class="awareness-section" id="remember">
+
+            <h2>10. Remember 💕</h2>
+
+            <div class="awareness-card">
+                <p>
+                    There is no single perfect menstrual cycle for everyone.
+                    Cycle length, symptoms and experiences can differ.
+                    Tracking patterns can help people understand changes,
+                    but it cannot replace medical advice.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>HerCycle 🌸</h3>
+        <p>Understand Your Cycle. Understand Your Health.</p>
+    </footer>
+
+    
+
+    
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

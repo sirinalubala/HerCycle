@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Journal | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .mood-intensity {
+            margin: 20px 0;
+        }
+
+        .mood-intensity input {
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .intensity-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #777;
+        }
+
+        .mood-entry {
+            background: #fff5f8;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 4px solid #e78aaa;
+        }
+
+        .mood-entry-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .mood-entry p {
+            margin: 8px 0;
+        }
+
+        .delete-mood {
+            background: #e78aaa;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        #moodMessage {
+            margin: 12px 0;
+            color: #a34c70;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>HerCycle</h2>
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="tracker.html">Period Tracker</a>
+            <a href="symptoms.html">Symptoms</a>
+            <a href="mood.html">Mood Journal</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </nav>
+
+    <main class="mood-container">
+
+        <section class="mood-heading">
+            <h1>Your Mood Journal 💗</h1>
+            <p>Take a moment to understand how you feel today.</p>
+        </section>
+
+        <section class="mood-form-card">
+
+            <h2>How are you feeling today?</h2>
+
+            <form id="moodForm">
+
+                <label for="moodDate">Date</label>
+                <input type="date" id="moodDate" required>
+
+                <label>Choose your mood</label>
+
+                <div class="mood-options">
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Happy" required>
+                        <span>😊 Happy</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Calm">
+                        <span>😌 Calm</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Sad">
+                        <span>😢 Sad</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Anxious">
+                        <span>😟 Anxious</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Irritated">
+                        <span>😤 Irritated</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Tired">
+                        <span>😴 Tired</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Emotional">
+                        <span>🥺 Emotional</span>
+                    </label>
+
+                    <label class="mood-option">
+                        <input type="radio" name="mood" value="Energetic">
+                        <span>⚡ Energetic</span>
+                    </label>
+
+                </div>
+
+                <div class="mood-intensity">
+                    <label for="moodIntensity">
+                        How strongly are you feeling this mood?
+                    </label>
+
+                    <input
+                        type="range"
+                        id="moodIntensity"
+                        min="1"
+                        max="5"
+                        value="3"
+                    >
+
+                    <div class="intensity-labels">
+                        <span>1 - Slightly</span>
+                        <span>5 - Very strongly</span>
+                    </div>
+
+                    <p>Intensity: <strong id="intensityValue">3 / 5</strong></p>
+                </div>
+
+                <label for="moodNotes">What's on your mind?</label>
+
+                <textarea
+                    id="moodNotes"
+                    rows="4"
+                    placeholder="Write anything you want to remember about today..."
+                ></textarea>
+
+                <p id="moodMessage"></p>
+
+                <button type="submit">Save Mood</button>
+
+            </form>
+
+        </section>
+
+        <section class="mood-history">
+
+            <h2>Your Mood History</h2>
+            <div id="moodHistoryList"></div>
+
+        </section>
+
+        <section class="mood-info">
+            <h3>A gentle reminder 💗</h3>
+            <p>
+                Your feelings are valid. Mood changes can happen for many
+                reasons, including stress, sleep, and hormonal changes.
+                Your journal is a space to understand yourself without judgment.
+            </p>
+        </section>
+
+    </main>
+
+    
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dashboard-container {
+            max-width: 1150px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .welcome-section {
+            padding: 30px;
+            border-radius: 18px;
+            background: #fceaf1;
+            margin-bottom: 30px;
+        }
+
+        .welcome-section h1 {
+            color: #a94e78;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 23px;
+            border-radius: 15px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .dashboard-card h2 {
+            color: #a94e78;
+            font-size: 20px;
+        }
+
+        .dashboard-card p {
+            line-height: 1.6;
+            color: #655762;
+        }
+
+        .dashboard-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 17px;
+            border-radius: 8px;
+            background: #d9789b;
+            color: white;
+            text-decoration: none;
+        }
+
+        .dashboard-message {
+            margin-top: 30px;
+            padding: 25px;
+            text-align: center;
+            background: #fff0f5;
+            border-radius: 15px;
+        }
+
+        .dashboard-message h2 {
+            color: #a94e78;
+        }
+
+        .health-analytics {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 1px solid #f0dce6;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+        }
+
+        .health-analytics > h2 {
+            margin-top: 0;
+            color: #a94e78;
+        }
+
+        .analytics-status,
+        .analytics-empty {
+            color: #655762;
+        }
+
+        .analytics-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
+        }
+
+        .analytics-stat,
+        .analytics-chart {
+            padding: 17px;
+            border: 1px solid #f3e5ec;
+            border-radius: 13px;
+            background: #fff8fb;
+        }
+
+        .analytics-stat p {
+            margin: 0 0 8px;
+            color: #655762;
+            font-size: 13px;
+        }
+
+        .analytics-stat strong {
+            color: #a94e78;
+            font-size: 21px;
+            overflow-wrap: anywhere;
+        }
+
+        .analytics-charts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .analytics-chart h3 {
+            margin-top: 0;
+            color: #a94e78;
+        }
+
+        .analytics-bar-row {
+            display: grid;
+            grid-template-columns: minmax(90px, 1fr) minmax(70px, 2fr) auto;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        .analytics-bar-label {
+            overflow-wrap: anywhere;
+        }
+
+        .analytics-bar-track {
+            height: 10px;
+            overflow: hidden;
+            border-radius: 99px;
+            background: #f2e4eb;
+        }
+
+        .analytics-bar-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #d9789b, #b995cf);
+        }
+
+        @media (max-width: 600px) {
+            .welcome-section {
+                padding: 22px;
+            }
+
+            .dashboard-container {
+                padding: 14px;
+            }
+
+            .analytics-charts {
+                grid-template-columns: 1fr;
+            }
+
+            .health-analytics {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>HerCycle 🌸</h2>
+
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="tracker.html">Period Tracker</a>
+            <a href="symptoms.html">Symptoms</a>
+            <a href="awareness.html">Awareness</a>
+            <a href="reminder.html">Reminders</a>
+        </div>
+
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <section class="welcome-section">
+            <p>YOUR PERSONAL MENSTRUAL HEALTH SPACE</p>
+            <h1>Welcome to HerCycle 🌷</h1>
+            <p>
+                Understand your cycle, track your symptoms,
+                take care of your health and learn something new.
+            </p>
+        </section>
+
+        <section class="health-analytics" aria-labelledby="healthAnalyticsTitle">
+            <h2 id="healthAnalyticsTitle">📊 Your Health Analytics</h2>
+            <p id="analyticsStatus" class="analytics-status" role="status">Loading your saved health data...</p>
+
+            <div class="analytics-stat-grid">
+                <article class="analytics-stat">
+                    <p>Average Cycle Length</p>
+                    <strong id="analyticsAverageCycle">--</strong>
+                </article>
+                <article class="analytics-stat">
+                    <p>Average Period Duration</p>
+                    <strong id="analyticsAverageDuration">--</strong>
+                </article>
+                <article class="analytics-stat">
+                    <p>Last Recorded Period</p>
+                    <strong id="analyticsLastPeriod">--</strong>
+                </article>
+                <article class="analytics-stat">
+                    <p>Next Expected Period</p>
+                    <strong id="analyticsNextPeriod">--</strong>
+                </article>
+                <article class="analytics-stat">
+                    <p>Current Cycle Day</p>
+                    <strong id="analyticsCycleDay">--</strong>
+                </article>
+                <article class="analytics-stat">
+                    <p>Total Period Records</p>
+                    <strong id="analyticsPeriodCount">0</strong>
+                </article>
+            </div>
+
+            <div class="analytics-charts">
+                <article class="analytics-chart">
+                    <h3>Most Frequently Reported Symptoms</h3>
+                    <div id="analyticsSymptoms">
+                        <p class="analytics-empty">No symptom records yet.</p>
+                    </div>
+                </article>
+                <article class="analytics-chart">
+                    <h3>Mood Distribution</h3>
+                    <div id="analyticsMoods">
+                        <p class="analytics-empty">No mood entries yet.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+
+            <div class="dashboard-card">
+                <h2>🩸 Period Tracker</h2>
+                <p>
+                    Record your period dates and keep track
+                    of your menstrual cycle.
+                </p>
+                <a href="tracker.html">Track Period →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>🌸 Symptoms</h2>
+                <p>
+                    Record symptoms, their severity and
+                    changes throughout your cycle.
+                </p>
+                <a href="symptoms.html">Track Symptoms →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>💗 Mood Journal</h2>
+                <p>
+                    Record your daily mood, intensity and
+                    personal notes.
+                </p>
+                <a href="mood.html">Open Journal →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>🔔 Reminders</h2>
+                <p>
+                    Manage your period-related reminders
+                    and stay prepared.
+                </p>
+                <a href="reminder.html">View Reminders →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>📊 Monthly Health Report</h2>
+                <p>
+                    Review your period history, symptoms
+                    and mood records month by month.
+                </p>
+                <a href="reports.html">View Reports →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>📚 Awareness</h2>
+                <p>
+                    Learn about menstrual health, hygiene,
+                    myths and ways to support others.
+                </p>
+                <a href="awareness.html">Explore Awareness →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>❓ Anonymous Question Box</h2>
+                <p>
+                    Write down your menstrual health questions
+                    in a private space on this device.
+                </p>
+                <a href="questions.html">Ask a Question →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>🚨 Period Emergency Guide</h2>
+                <p>
+                    Learn how to respond to unexpected periods,
+                    severe cramps and other urgent situations.
+                </p>
+                <a href="emergencyguide.html">View Guide →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>🧠 Menstrual Health Quiz</h2>
+                <p>
+                    Test your knowledge and learn more
+                    about menstrual health.
+                </p>
+                <a href="quiz.html">Take Quiz →</a>
+            </div>
+
+        </section>
+
+        <section class="dashboard-message">
+            <h2>Your Health Matters 💕</h2>
+            <p>
+                Every cycle is different. Understand your body,
+                listen to it and never hesitate to seek medical help
+                when something doesn't feel right.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>HerCycle 🌸</h3>
+        <p>Understand Your Cycle. Understand Your Health.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

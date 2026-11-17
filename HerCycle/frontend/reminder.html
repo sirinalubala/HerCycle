@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminders | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .reminder-container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .reminder-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reminder-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .reminder-card label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+        }
+
+        .reminder-card input,
+        .reminder-card select,
+        .reminder-card textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font: inherit;
+        }
+
+        .reminder-card button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #d85b8b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .reminder-card button:hover {
+            background: #bd4775;
+        }
+
+        .reminder-entry {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .reminder-entry button {
+            background: #777;
+            padding: 7px 12px;
+            font-size: 13px;
+        }
+
+        .message {
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .note {
+            background: #fff0f5;
+            padding: 15px;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="tracker.html">Period Tracker</a>
+        <a href="symptoms.html">Symptoms</a>
+        <a href="mood.html">Mood Journal</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="reports.html">Reports</a>
+        <a href="awareness.html">Awareness</a>
+        <a href="boy-dashboard.html">For Him</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <div class="reminder-container">
+
+        <div class="reminder-header">
+            <h1>Period Reminders</h1>
+            <p>Stay prepared and take care of yourself throughout your cycle.</p>
+        </div>
+
+        <div class="reminder-card">
+            <h2>Your Cycle Reminder</h2>
+            <p id="cycleReminder">Add your period records to see an estimated reminder.</p>
+        </div>
+
+        <div class="reminder-card">
+            <h2>Create a Personal Reminder</h2>
+
+            <label for="reminderTitle">Reminder Title</label>
+            <input type="text" id="reminderTitle"
+                placeholder="Example: Buy sanitary products">
+
+            <label for="reminderDate">Reminder Date</label>
+            <input type="date" id="reminderDate">
+
+            <label for="reminderType">Reminder Type</label>
+            <select id="reminderType">
+                <option value="">Select reminder type</option>
+                <option value="Period Preparation">Period Preparation</option>
+                <option value="Self-Care">Self-Care</option>
+                <option value="Medication">Medication</option>
+                <option value="Doctor Appointment">Doctor Appointment</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="reminderNotes">Notes (Optional)</label>
+            <textarea id="reminderNotes" rows="3"
+                placeholder="Add any additional details..."></textarea>
+
+            <button onclick="addReminder()">Save Reminder</button>
+
+            <p class="message" id="message"></p>
+        </div>
+
+        <div class="reminder-card">
+            <h2>Your Saved Reminders</h2>
+            <div id="reminderList">
+                <p>No reminders added yet.</p>
+            </div>
+        </div>
+
+        <div class="reminder-card">
+            <h2>Self-Care Tips</h2>
+
+            <div class="note">
+                <p>Drink enough water throughout the day.</p>
+                <p>Keep your menstrual products ready.</p>
+                <p>Get enough sleep and rest when needed.</p>
+                <p>Maintain good menstrual hygiene.</p>
+                <p>Consult a healthcare professional if you experience unusual or concerning symptoms.</p>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

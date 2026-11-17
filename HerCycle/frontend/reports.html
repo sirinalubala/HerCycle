@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Health Reports | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .report-filter {
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .report-filter input {
+            padding: 10px;
+            border: 1px solid #e5a5bc;
+            border-radius: 8px;
+        }
+
+        .report-actions {
+            margin: 20px 0;
+        }
+
+        .report-actions button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #d9789b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .report-content {
+            line-height: 1.8;
+        }
+
+        .report-content ul {
+            padding-left: 25px;
+        }
+
+        .report-item {
+            background: #fff5f8;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .report-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
+        }
+
+        .report-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .report-card h2 {
+            margin-top: 10px;
+        }
+
+        .report-disclaimer {
+            margin: 30px 0;
+        }
+
+        @media print {
+            .navbar,
+            .report-filter,
+            .report-actions,
+            footer {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .reports-container {
+                width: 100%;
+                margin: 0;
+            }
+
+            .report-card,
+            .report-section,
+            .report-disclaimer {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Her<span>Cycle</span></a>
+
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="tracker.html">Period Tracker</a></li>
+            <li><a href="symptoms.html">Symptoms</a></li>
+            <li><a href="mood.html">Mood Journal</a></li>
+            <li><a href="reports.html">Reports</a></li>
+        </ul>
+
+        <a href="index.html" class="login-btn">Logout</a>
+    </nav>
+
+    <main class="reports-container">
+
+        <section class="reports-heading">
+            <p class="section-label">YOUR HEALTH OVERVIEW</p>
+            <h1>Monthly Health Reports 📊</h1>
+            <p>Understand your patterns through your recorded health data.</p>
+        </section>
+
+        <section class="report-filter">
+            <label for="reportMonth">Select Month:</label>
+            <input type="month" id="reportMonth">
+        </section>
+
+        <div class="report-actions">
+            <button onclick="window.print()">Print / Save as PDF 📄</button>
+        </div>
+
+        <section class="report-stats">
+
+            <div class="report-card">
+                <span>🩷</span>
+                <p>Period Records</p>
+                <h2 id="reportPeriodCount">0</h2>
+            </div>
+
+            <div class="report-card">
+                <span>📅</span>
+                <p>Average Cycle Length</p>
+                <h2 id="reportAverageCycle">--</h2>
+            </div>
+
+            <div class="report-card">
+                <span>🌸</span>
+                <p>Average Period Duration</p>
+                <h2 id="reportAverageDuration">--</h2>
+            </div>
+
+            <div class="report-card">
+                <span>🩹</span>
+                <p>Symptom Records</p>
+                <h2 id="reportSymptomCount">0</h2>
+            </div>
+
+            <div class="report-card">
+                <span>💗</span>
+                <p>Mood Entries</p>
+                <h2 id="reportMoodCount">0</h2>
+            </div>
+
+        </section>
+
+        <section class="report-section">
+            <h2>Symptom Overview 🌷</h2>
+            <div class="report-content">
+                <p>Most frequently recorded symptoms:</p>
+                <div id="reportSymptoms">
+                    No symptom records for this month.
+                </div>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h2>Mood Overview 💭</h2>
+            <div class="report-content">
+                <p>Your recorded moods this month:</p>
+                <div id="reportMoods">
+                    No mood entries for this month.
+                </div>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h2>Period History 🗓️</h2>
+            <div class="report-content" id="reportPeriodHistory">
+                No period records for this month.
+            </div>
+        </section>
+
+        <section class="report-disclaimer">
+            <h3>Remember 💗</h3>
+            <p>
+                These reports are based only on the information you record.
+                They help you observe patterns but cannot diagnose health
+                conditions or predict your cycle with certainty.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <h2>HerCycle 🌸</h2>
+        <p>Understand Your Cycle. Understand Your Health.</p>
+    </footer>
+
+    
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

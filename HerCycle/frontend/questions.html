@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Question Box | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .questions-container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .questions-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question-form-card,
+        .submitted-questions {
+            background: #fff5f8;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+
+        .question-form-card label {
+            display: block;
+            margin: 15px 0 8px;
+            font-weight: 600;
+        }
+
+        .question-form-card select,
+        .question-form-card textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5b5c7;
+            border-radius: 9px;
+            font: inherit;
+            box-sizing: border-box;
+        }
+
+        .question-form-card textarea {
+            resize: vertical;
+        }
+
+        .question-form-card button {
+            margin-top: 18px;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 9px;
+            background: #d9789b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .question-entry {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border-left: 4px solid #d9789b;
+        }
+
+        .question-entry-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: #98536d;
+            font-size: 14px;
+        }
+
+        .question-entry p {
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .delete-question {
+            background: #d9789b;
+            color: white;
+            border: none;
+            padding: 8px 13px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        #questionMessage {
+            color: #98536d;
+            margin-top: 12px;
+        }
+
+        .anonymous-note {
+            background: #fff0f5;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .empty-questions {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>HerCycle</h2>
+        <div>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="tracker.html">Period Tracker</a>
+            <a href="awareness.html">Awareness</a>
+            <a href="questions.html">Question Box</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </nav>
+
+    <main class="questions-container">
+
+        <section class="questions-heading">
+            <h1>Anonymous Question Box 💌</h1>
+            <p>
+                Have a question about menstrual health?
+                Share it freely, without sharing your name.
+            </p>
+        </section>
+
+        <section class="anonymous-note">
+            <h3>Your Questions Matter 💗</h3>
+            <p>
+                This is a space to write your doubts without judgment.
+                Choose a category and submit your question anonymously.
+            </p>
+            <p>
+                Please avoid including names, phone numbers, addresses
+                or other personal information.
+            </p>
+        </section>
+
+        <section class="question-form-card">
+
+            <h2>Ask Your Question</h2>
+
+            <form id="questionForm">
+
+                <label for="questionCategory">Choose a Category</label>
+
+                <select id="questionCategory" required>
+                    <option value="">Select a category</option>
+                    <option value="Periods">Periods</option>
+                    <option value="Menstrual Cycle">Menstrual Cycle</option>
+                    <option value="Hygiene">Hygiene</option>
+                    <option value="Symptoms">Symptoms</option>
+                    <option value="Emotional Wellbeing">Emotional Wellbeing</option>
+                    <option value="General">General Questions</option>
+                </select>
+
+                <label for="questionText">Your Question</label>
+
+                <textarea
+                    id="questionText"
+                    rows="5"
+                    maxlength="500"
+                    placeholder="Write your question here..."
+                    required
+                ></textarea>
+
+                <p id="characterCount">0 / 500 characters</p>
+
+                <p id="questionMessage" role="status"></p>
+
+                <button type="submit">Submit Anonymously 💗</button>
+
+            </form>
+
+        </section>
+
+        <section class="submitted-questions">
+
+            <h2>Your Submitted Questions</h2>
+
+            <p>
+                Your submitted questions are private to your account. Your name
+                is not shown with the question.
+            </p>
+
+            <div id="questionHistory">
+                <p class="empty-questions">
+                    No questions submitted yet.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="anonymous-note">
+            <h3>A Gentle Reminder 🌸</h3>
+            <p>
+                Questions are stored with your account so you can review or
+                delete them. They are not sent to a doctor and do not receive
+                medical answers. For personal health concerns, consult a
+                qualified healthcare professional.
+            </p>
+        </section>
+
+    </main>
+
+    
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

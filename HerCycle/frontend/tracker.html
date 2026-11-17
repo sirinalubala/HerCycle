@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Tracker | HerCycle</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .tracker-container {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .tracker-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tracker-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .tracker-card h2 {
+            margin-bottom: 15px;
+        }
+
+        .tracker-card label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+        }
+
+        .tracker-card input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .tracker-card button {
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #d85b8b;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .tracker-card button:hover {
+            background: #bd4775;
+        }
+
+        .cycle-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .info-box {
+            background: #fff0f5;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-box h3 {
+            color: #bd4775;
+            font-size: 25px;
+            margin: 8px 0;
+        }
+
+        .period-entry {
+            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+        }
+
+        .period-entry button {
+            margin-top: 8px;
+            padding: 7px 12px;
+            background: #777;
+            font-size: 13px;
+        }
+
+        .message {
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        @media(max-width: 600px) {
+            .tracker-container {
+                padding: 12px;
+            }
+
+            .tracker-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="tracker.html">Period Tracker</a>
+        <a href="symptoms.html">Symptoms</a>
+        <a href="mood.html">Mood Journal</a>
+        <a href="reminder.html">Reminders</a>
+        <a href="reports.html">Reports</a>
+        <a href="awareness.html">Awareness</a>
+        <a href="boy-dashboard.html">For Him</a>
+        <a href="index.html">Logout</a>
+    </nav>
+
+    <div class="tracker-container">
+
+        <div class="tracker-header">
+            <h1>Period Tracker</h1>
+            <p>Understand your cycle and keep track of your menstrual health.</p>
+        </div>
+
+        <div class="tracker-card">
+            <h2>Record Your Period</h2>
+
+            <label for="startDate">Period Start Date</label>
+            <input type="date" id="startDate">
+
+            <label for="endDate">Period End Date</label>
+            <input type="date" id="endDate">
+
+            <button id="savePeriodButton" onclick="savePeriod()">Save Period Record</button>
+
+            <p class="message" id="message"></p>
+        </div>
+
+        <div class="tracker-card">
+            <h2>Your Cycle Overview</h2>
+
+            <div class="cycle-info">
+                <div class="info-box">
+                    <p>Average Cycle</p>
+                    <h3 id="averageCycle">--</h3>
+                    <small>Days</small>
+                </div>
+
+                <div class="info-box">
+                    <p>Average Period</p>
+                    <h3 id="averagePeriod">--</h3>
+                    <small>Days</small>
+                </div>
+
+                <div class="info-box">
+                    <p>Next Expected Period</p>
+                    <h3 id="nextPeriod">--</h3>
+                </div>
+
+                <div class="info-box">
+                    <p>Current Cycle Day</p>
+                    <h3 id="cycleDay">--</h3>
+                </div>
+            </div>
+
+            <p style="margin-top:18px; font-size:13px; color:#777;">
+                Predictions are estimates based on your recorded cycles. They are not a reliable method of contraception or a medical diagnosis.
+            </p>
+        </div>
+
+        <div class="tracker-card">
+            <h2>Period History</h2>
+            <div id="periodHistory">
+                <p>No period records yet.</p>
+            </div>
+        </div>
+
+    </div>
+
+    
+    
+    
+    
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
